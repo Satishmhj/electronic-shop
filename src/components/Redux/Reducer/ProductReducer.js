@@ -1,4 +1,4 @@
-import { PRODUCT_lIST } from "./Constants/Constants";
+import { PRODUCT_lIST } from "../Constants/Constants";
 
 const INITIAL_STATE = {
   products: [],
