@@ -7,7 +7,7 @@ import { FaUserAlt } from 'react-icons/fa';
 const Navbar = () => {
   return (
     <>
-      <nav class="navbar navbar-expand-lg navbar-light bg-primary">
+      <nav class="navbar navbar-expand-md navbar-light bg-primary fixed-top">
         <Container>
           <button
             class="navbar-toggler"
