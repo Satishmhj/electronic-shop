@@ -4,9 +4,12 @@ import "../Navbar/navbar.scss";
 import { ImHome, ImCart } from "react-icons/im";
 import { FaUserAlt } from "react-icons/fa";
 import Cart from "../Cart/Cart";
+import { useSelector } from "react-redux";
 
 const Navbar = (props) => {
   const { cartDetail, setCartDetail, cartIcon, setCartIcon, cd, setCd } = props;
+
+  const click = useSelector((state) => state.click.click);
 
   return (
     <>
@@ -50,7 +53,7 @@ const Navbar = (props) => {
                     }}
                   />
                   <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger border border-light rounded-circle">
-                    {0}
+                    {click}
                     <span class="visually-hidden">unread messages</span>
                   </span>
                 </div>

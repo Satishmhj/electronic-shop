@@ -4,6 +4,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { useEffect, useState } from "react";
 import { fetchData } from "./components/Redux/Actions/ProductAction";
 import Product from "./components/Product/Product";
+import CheckOut from "./components/CheckOut/CheckOut";
 
 function App() {
   const [cartDetail, setCartDetail] = useState(false);
@@ -31,6 +32,7 @@ function App() {
         cartIcon={cartIcon}
       />
       <Product products={products} filter={filter} setFilter={setFilter} cd={cd} setCd={setCd} />
+      <CheckOut/>
     </div>
   );
 }

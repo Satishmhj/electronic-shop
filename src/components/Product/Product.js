@@ -4,6 +4,7 @@ import "../Product/Product";
 import Filter from "../Filter/Filter";
 import Loader from "../Loader/Loader";
 import { IncrementCounter, DecrementCounter } from "../Redux/Actions/Counter";
+import { CLickAddToCart } from "../Redux/Actions/ClickAddToCart";
 
 const Product = (props) => {
   const { filter, setFilter, cd, setCd } = props;
@@ -11,9 +12,9 @@ const Product = (props) => {
   const product = useSelector((state) => state.product.products);
   const isLoading = useSelector((state) => state.product.isLoading);
   const count = useSelector((state) => state.count.count);
+  const click = useSelector((state) => state.click);
 
-
-  console.log(count);
+  console.log(click.click);
   const dispatch = useDispatch();
   // useEffect(() => {
   //   dispatch(IncrementCounter(), DecrementCounter())
@@ -51,8 +52,7 @@ const Product = (props) => {
               d.toLocaleDateString();
               const date = d.toLocaleDateString().replaceAll("/", "-");
 
-              let a = count.find((item)=>item.id == items.id)
-
+              let a = count.find((item) => item.id == items.id);
 
               return (
                 <>
@@ -69,19 +69,23 @@ const Product = (props) => {
                           role="group"
                           style={{ float: "right" }}
                         >
-                          <button type="button" class="btn btn-outline-info" onClick={()=> {
-                            dispatch(DecrementCounter(items))
-                          }}>
+                          <button
+                            type="button"
+                            class="btn btn-outline-info"
+                            onClick={() => {
+                              dispatch(DecrementCounter(items));
+                            }}
+                          >
                             -
                           </button>
                           <button type="button" class="btn btn-outline-info">
-                            { !a ? 0 : a.count}
+                            {!a ? 0 : a.count}
                           </button>
                           <button
                             type="button"
                             class="btn btn-outline-info"
                             onClick={() => {
-                              dispatch(IncrementCounter(items))
+                              dispatch(IncrementCounter(items));
                             }}
                           >
                             +
@@ -105,6 +109,8 @@ const Product = (props) => {
                             let data = [...cd];
                             data.push(items);
                             setCd(data);
+
+                            dispatch(CLickAddToCart());
                           }}
                         >
                           Add to Cart

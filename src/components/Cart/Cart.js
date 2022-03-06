@@ -1,10 +1,15 @@
 import React, { useEffect, useState } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { BsTrashFill } from "react-icons/bs";
+import { RemoveFromCart } from "../Redux/Actions/ClickAddToCart";
 
 const Cart = (props) => {
   const { setCartIcon, cd, setCd } = props;
   const [total, setTotal] = useState(0);
+
+  const click = useSelector(state => state.click.click);
+
+  const dispatch = useDispatch();
 
   const sum = cd.reduce((item1, item2) => {
     const num = Number(item2.price.replace("$", ""));
@@ -71,6 +76,10 @@ const Cart = (props) => {
                               let data = [...cd];
                               data.splice(index, 1);
                               setCd(data);
+
+                              dispatch(RemoveFromCart())
+
+
                             }}
                           />
                         </button>
