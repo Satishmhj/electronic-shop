@@ -13,16 +13,16 @@ const Cart = (props) => {
   const dispatch = useDispatch();
   let navigate = useNavigate();
 
-  const navigating =() => {
-    navigate('/checkOut')
-  }
+  const navigating = () => {
+    navigate("/checkOut");
+  };
 
   const sum = cd.reduce((item1, item2) => {
     const num = Number(item2.price.replace("$", ""));
     return item1 + num;
   }, 0);
   console.log(sum);
-  
+
   return (
     <>
       <div
@@ -103,14 +103,16 @@ const Cart = (props) => {
                 total: {sum}
               </button>
               {click ? (
-                <button
-                  type="button"
-                  class="btn btn-success"
-                    onClick={navigating}
-                >
-                  Checkout
-                </button>
-                // <Link to={"/CheckOut"}>Checkout</Link>
+                // <button
+                //   type="button"
+                //   class="btn btn-success"
+                //     onClick={navigating}
+                // >
+                //   Checkout
+                // </button>
+                <Link to={"/checkout"}>
+                  <button className="btn btn-success">Checkout</button>
+                </Link>
               ) : (
                 <button type="button" class="btn btn-success" disabled>
                   Checkout
