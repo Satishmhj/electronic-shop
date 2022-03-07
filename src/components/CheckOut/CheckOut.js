@@ -1,46 +1,41 @@
 import { Formik } from "formik";
 import React from "react";
+import * as Yup from "yup";
 
 const CheckOut = () => {
+  const validationSchema = Yup.object({
+    name: Yup.string().required("name is required"),
+    billingAddress: Yup.string().required("billing address required"),
+    deliverAddress: Yup.string().required("delivery address is required"),
+    telephoneNumber: Yup.number().required("telephone number is required"),
+    currentDate: Yup.date().required("date is required"),
+  });
   return (
     <>
       <div className="container">
         <div>
-          <h1 className="display-3 text-success  text-center m-4">
+          <h1 className="display-3 text-success  text-center " style={{marginTop:"70px"}}>
             CheckOut Form
           </h1>
         </div>
         <div className="container">
           <Formik
             initialValues={{
-              email: "",
-              password: "",
               name: "",
               billingAddress: "",
               deliverAddress: "",
               telephoneNumber: "",
               currentDate: "",
             }}
-            validate={(values) => {
-              const errors = {};
-              if (!values.email) {
-                errors.email = "Required";
-              } else if (
-                !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(values.email)
-              ) {
-                errors.email = "Invalid email address";
-              }
+            // validationSchema={validationSchema}
 
-              if (!values.name) {
-                errors.name = "required";
-              }
-              return errors;
-            }}
-            onSubmit={(values, { setSubmitting }) => {
+            onSubmit={(values, { setSubmitting, resetForm }) => {
               setTimeout(() => {
                 alert(JSON.stringify(values, null, 2));
                 setSubmitting(false);
               }, 400);
+
+              resetForm();
             }}
           >
             {({

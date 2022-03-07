@@ -5,12 +5,14 @@ import { useEffect, useState } from "react";
 import { fetchData } from "./components/Redux/Actions/ProductAction";
 import Product from "./components/Product/Product";
 import CheckOut from "./components/CheckOut/CheckOut";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 
 function App() {
   const [cartDetail, setCartDetail] = useState(false);
   const [filter, setFilter] = useState(false);
   const [cartIcon, setCartIcon] = useState(false);
   const [cd, setCd] = useState([]);
+  const [check, setCheck] = useState(false);
 
   const products = useSelector((state) => state.product.products);
   // console.log(products);
@@ -31,8 +33,27 @@ function App() {
         setCartIcon={setCartIcon}
         cartIcon={cartIcon}
       />
-      <Product products={products} filter={filter} setFilter={setFilter} cd={cd} setCd={setCd} />
-      <CheckOut/>
+      {/* <Product
+        // products={products}
+         
+      /> */}
+      {/* <CheckOut/> */}
+      <BrowserRouter>
+        <Routes>
+          <Route path="/checkOut" element={<CheckOut />}></Route>
+          <Route
+            path="/"
+            element={
+              <Product
+                filter={filter}
+                setFilter={setFilter}
+                cd={cd}
+                setCd={setCd}
+              />
+            }
+          ></Route>
+        </Routes>
+      </BrowserRouter>
     </div>
   );
 }

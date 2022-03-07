@@ -7,7 +7,7 @@ const Cart = (props) => {
   const { setCartIcon, cd, setCd } = props;
   const [total, setTotal] = useState(0);
 
-  const click = useSelector(state => state.click.click);
+  const click = useSelector((state) => state.click.click);
 
   const dispatch = useDispatch();
 
@@ -77,9 +77,7 @@ const Cart = (props) => {
                               data.splice(index, 1);
                               setCd(data);
 
-                              dispatch(RemoveFromCart())
-
-
+                              dispatch(RemoveFromCart());
                             }}
                           />
                         </button>
