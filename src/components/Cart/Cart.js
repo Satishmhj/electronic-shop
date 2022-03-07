@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { BsTrashFill } from "react-icons/bs";
 import { RemoveFromCart } from "../Redux/Actions/ClickAddToCart";
+import { Link, useNavigate } from "react-router-dom";
 
 const Cart = (props) => {
   const { setCartIcon, cd, setCd } = props;
@@ -10,12 +11,18 @@ const Cart = (props) => {
   const click = useSelector((state) => state.click.click);
 
   const dispatch = useDispatch();
+  let navigate = useNavigate();
+
+  const navigating =() => {
+    navigate('/checkOut')
+  }
 
   const sum = cd.reduce((item1, item2) => {
     const num = Number(item2.price.replace("$", ""));
     return item1 + num;
   }, 0);
   console.log(sum);
+  
   return (
     <>
       <div
@@ -95,9 +102,20 @@ const Cart = (props) => {
               >
                 total: {sum}
               </button>
-              <button type="button" class="btn btn-success">
-                Checkout
-              </button>
+              {click ? (
+                <button
+                  type="button"
+                  class="btn btn-success"
+                    onClick={navigating}
+                >
+                  Checkout
+                </button>
+                // <Link to={"/CheckOut"}>Checkout</Link>
+              ) : (
+                <button type="button" class="btn btn-success" disabled>
+                  Checkout
+                </button>
+              )}
             </div>
           </div>
         </div>

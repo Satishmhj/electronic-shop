@@ -1,11 +1,11 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import "../Product/Product";
 import Filter from "../Filter/Filter";
 import Loader from "../Loader/Loader";
 import { IncrementCounter, DecrementCounter } from "../Redux/Actions/Counter";
 import { CLickAddToCart } from "../Redux/Actions/ClickAddToCart";
-import { FaFilter } from 'react-icons/fa';
+import { FaFilter } from "react-icons/fa";
 
 const Product = (props) => {
   const { filter, setFilter, cd, setCd } = props;
@@ -13,7 +13,10 @@ const Product = (props) => {
   const product = useSelector((state) => state.product.products);
   const isLoading = useSelector((state) => state.product.isLoading);
   const count = useSelector((state) => state.count.count);
-  const click = useSelector((state) => state.click);
+  const click = useSelector((state) => state.click.click);
+
+  // let b = click;
+  console.log(click);
 
   // console.log(click.click);
   const dispatch = useDispatch();
@@ -39,7 +42,7 @@ const Product = (props) => {
               setFilter(!filter);
             }}
           >
-            <FaFilter/>
+            <FaFilter />
             filter
           </button>
         </div>
@@ -105,19 +108,25 @@ const Product = (props) => {
                           <b>Released on: {date}</b>
                         </p>
                         <div className="d-flex justify-content-center">
-                          <button
-                            type="button"
-                            class="btn btn-primary"
-                            onClick={() => {
-                              let data = [...cd];
-                              data.push(items);
-                              setCd(data);
+                          {a ? (
+                            <button
+                              type="button"
+                              class="btn btn-primary"
+                              onClick={() => {
+                                let data = [...cd];
+                                data.push(items);
+                                setCd(data);
 
-                              dispatch(CLickAddToCart());
-                            }}
-                          >
-                            Add to Cart
-                          </button>
+                                dispatch(CLickAddToCart());
+                              }}
+                            >
+                              Add to Cart
+                            </button>
+                          ) : (
+                            <button className="btn btn-primary" disabled>
+                              Add to Cart
+                            </button>
+                          )}
                         </div>
                       </div>
                     </div>

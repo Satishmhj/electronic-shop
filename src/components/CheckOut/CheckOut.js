@@ -3,7 +3,7 @@ import React from "react";
 import * as Yup from "yup";
 
 const CheckOut = () => {
-  const validationSchema = Yup.object({
+  const validation = Yup.object({
     name: Yup.string().required("name is required"),
     billingAddress: Yup.string().required("billing address required"),
     deliverAddress: Yup.string().required("delivery address is required"),
@@ -14,7 +14,10 @@ const CheckOut = () => {
     <>
       <div className="container">
         <div>
-          <h1 className="display-3 text-success  text-center " style={{marginTop:"70px"}}>
+          <h1
+            className="display-3 text-success  text-center "
+            style={{ marginTop: "70px" }}
+          >
             CheckOut Form
           </h1>
         </div>
@@ -27,8 +30,7 @@ const CheckOut = () => {
               telephoneNumber: "",
               currentDate: "",
             }}
-            // validationSchema={validationSchema}
-
+            validationSchema={validation}
             onSubmit={(values, { setSubmitting, resetForm }) => {
               setTimeout(() => {
                 alert(JSON.stringify(values, null, 2));
@@ -58,7 +60,9 @@ const CheckOut = () => {
                   value={values.name}
                   className="form-control mt-3 bg-light"
                 />
-                {/* {errors.name && touched.name && errors.name} */}
+                <a className="text-danger">
+                  {errors.name && touched.name && errors.name}
+                </a>
                 <br />
                 <b className="display-6">Billing Address : </b>
                 <input
@@ -69,6 +73,11 @@ const CheckOut = () => {
                   value={values.billingAddress}
                   className="form-control mt-3 bg-light"
                 />
+                <a className="text-danger">
+                  {errors.billingAddress &&
+                    touched.billingAddress &&
+                    errors.billingAddress}
+                </a>
                 <br />
                 <b className="display-6">Delivery Address : </b>
                 <input
@@ -79,6 +88,11 @@ const CheckOut = () => {
                   value={values.deliverAddress}
                   className="form-control mt-3 bg-light"
                 />
+                <a className="text-danger">
+                  {errors.deliverAddress &&
+                    touched.deliverAddress &&
+                    errors.deliverAddress}
+                </a>
                 <br />
                 <b className="display-6">Telephone Number : </b>
                 <input
@@ -89,6 +103,11 @@ const CheckOut = () => {
                   value={values.telephoneNumber}
                   className="form-control mt-3 bg-light"
                 />
+                <a className="text-danger">
+                  {errors.telephoneNumber &&
+                    touched.telephoneNumber &&
+                    errors.telephoneNumber}
+                </a>
                 <br />
                 <b className="display-6">Date : </b>
                 <input
@@ -99,7 +118,13 @@ const CheckOut = () => {
                   value={values.currentDate}
                   className="form-control mt-3 bg-light"
                 />
+                <a className="text-danger">
+                  {errors.currentDate &&
+                    touched.currentDate &&
+                    errors.currentDate}
+                </a>
                 <br />
+
                 <div className="d-flex justify-content-center ">
                   <button
                     type="submit"

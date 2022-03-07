@@ -48,8 +48,34 @@ const Filter = (props) => {
               <div>
                 <a>Category</a>
                 <div className="category">
-                  <input type="text" placeholder=" विकल्प छान्नुहोस्" />
-                  <div class="btn-group">
+                  {/* <input type="text" placeholder=" विकल्प छान्नुहोस्" /> */}
+                  <div class="dropdown">
+                    <button
+                      class="btn btn-light dropdown-toggle"
+                      type="button"
+                      id="dropdownMenuButton"
+                      data-toggle="dropdown"
+                      aria-haspopup="true"
+                      aria-expanded="false"
+                    >
+                     विकल्प छान्नुहोस्
+                    </button>
+                    <div
+                      class="dropdown-menu"
+                      aria-labelledby="dropdownMenuButton"
+                    >
+                      <a class="dropdown-item" >
+                        Laptop
+                      </a>
+                      <a class="dropdown-item" >
+                        Mobile
+                      </a>
+                      <a class="dropdown-item" >
+                        HeadSet
+                      </a>
+                    </div>
+                  </div>
+                  {/* <div class="btn-group">
                     <button
                       type="button"
                       class="btn  dropdown-toggle"
@@ -68,16 +94,20 @@ const Filter = (props) => {
                         HeadSet
                       </a>
                     </div>
-                  </div>
+                  </div> */}
                 </div>
               </div>
+              <br/>
+              <br/>
+              <br/>
+              <br/>
             </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-danger" data-dismiss="modal">
                 Cancel
               </button>
               <button type="button" class="btn btn-success">
-                Save changes
+                Apply
               </button>
             </div>
           </div>
