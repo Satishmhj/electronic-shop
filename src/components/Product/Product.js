@@ -6,6 +6,7 @@ import Loader from "../Loader/Loader";
 import { IncrementCounter, DecrementCounter } from "../Redux/Actions/Counter";
 import { CLickAddToCart } from "../Redux/Actions/ClickAddToCart";
 import { FaFilter } from "react-icons/fa";
+import { Link } from "react-router-dom";
 
 const Product = (props) => {
   const { filter, setFilter, cd, setCd } = props;
@@ -15,8 +16,16 @@ const Product = (props) => {
   const count = useSelector((state) => state.count.count);
   const click = useSelector((state) => state.click.click);
 
+  const cardClick = () => {
+    return (
+      <>
+        <Link to={"/productDetail"}></Link>
+      </>
+    );
+  };
+
   // let b = click;
-  console.log(click);
+  // console.log(cardClick);
 
   // console.log(click.click);
   const dispatch = useDispatch();
@@ -98,7 +107,22 @@ const Product = (props) => {
                         </div>
                         <br />
                         <br />
-                        <b class="card-title">{items.name}</b>
+                        <b class="card-title " style={{ color: "black" }}>
+                          <Link
+                           to={"/productDetail"}
+                           state={{items}}
+                            // to={{
+                            //   pathname: "/productDetail",
+                            //   state: {
+                            //     key:"asdf"
+                            //   },
+                            // }}
+                            style={{ color: " black", textDecoration: "none" }}
+                            // state={items}
+                          >
+                            {items.name}
+                          </Link>
+                        </b>
                         <p class="card-text">
                           <b>Price: {p}</b>
                           <span style={{ float: "right", color: "green" }}>

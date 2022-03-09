@@ -58,49 +58,23 @@ const Filter = (props) => {
                       aria-haspopup="true"
                       aria-expanded="false"
                     >
-                     विकल्प छान्नुहोस्
+                      विकल्प छान्नुहोस्
                     </button>
                     <div
                       class="dropdown-menu"
                       aria-labelledby="dropdownMenuButton"
                     >
-                      <a class="dropdown-item" >
-                        Laptop
-                      </a>
-                      <a class="dropdown-item" >
-                        Mobile
-                      </a>
-                      <a class="dropdown-item" >
-                        HeadSet
-                      </a>
+                      <a class="dropdown-item">Laptop</a>
+                      <a class="dropdown-item">Mobile</a>
+                      <a class="dropdown-item">HeadSet</a>
                     </div>
                   </div>
-                  {/* <div class="btn-group">
-                    <button
-                      type="button"
-                      class="btn  dropdown-toggle"
-                      data-toggle="dropdown"
-                      aria-haspopup="true"
-                      aria-expanded="false"
-                    ></button>
-                    <div class="dropdown-menu">
-                      <a class="dropdown-item" >
-                        Laptop
-                      </a>
-                      <a class="dropdown-item" >
-                        SmartPhones
-                      </a>
-                      <a class="dropdown-item" >
-                        HeadSet
-                      </a>
-                    </div>
-                  </div> */}
                 </div>
               </div>
-              <br/>
-              <br/>
-              <br/>
-              <br/>
+              <br />
+              <br />
+              <br />
+              <br />
             </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-danger" data-dismiss="modal">

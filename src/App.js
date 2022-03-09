@@ -6,6 +6,7 @@ import { fetchData } from "./components/Redux/Actions/ProductAction";
 import Product from "./components/Product/Product";
 import CheckOut from "./components/CheckOut/CheckOut";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
+import ProductDetail from "./components/Product/ProductDetail";
 
 function App() {
   const [cartDetail, setCartDetail] = useState(false);
@@ -37,6 +38,7 @@ function App() {
       {/* <CheckOut/> */}
       <Routes>
         <Route path="/checkout" element={<CheckOut />}/>
+        <Route path="/productDetail" element={<ProductDetail />}/>
 
         <Route
           path="/"

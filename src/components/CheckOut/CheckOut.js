@@ -1,6 +1,8 @@
 import { Formik } from "formik";
 import React from "react";
 import * as Yup from "yup";
+import { useNavigate } from "react-router-dom";
+import Loader from "../Loader/Loader";
 
 const CheckOut = () => {
   const validation = Yup.object({
@@ -10,6 +12,12 @@ const CheckOut = () => {
     telephoneNumber: Yup.number().required("telephone number is required"),
     currentDate: Yup.date().required("date is required"),
   });
+
+  let navigate = useNavigate();
+
+  const handleClick = () => {
+    navigate("/");
+  };
   return (
     <>
       <div className="container">
@@ -35,9 +43,10 @@ const CheckOut = () => {
               setTimeout(() => {
                 alert(JSON.stringify(values, null, 2));
                 setSubmitting(false);
-              }, 400);
+              }, 200);
 
               resetForm();
+              handleClick();
             }}
           >
             {({
