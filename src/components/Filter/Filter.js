@@ -1,8 +1,14 @@
-import React from "react";
+import React, { useState } from "react";
 import "../../App.scss";
 
 const Filter = (props) => {
   const { setFilter } = props;
+  const [isOpen, setIsOpen] = useState(false);
+
+  const toggleOpen = () => {
+    setIsOpen(!isOpen);
+  };
+  const menuClass = `dropdown-menu${isOpen ? " show" : ""}`;
 
   return (
     <>
@@ -22,7 +28,7 @@ const Filter = (props) => {
               </h5>
               <button
                 type="button"
-                class="close btn-danger"
+                class="btn btn-danger"
                 data-dismiss="modal"
                 aria-label="Close"
                 onClick={() => setFilter(false)}
@@ -30,44 +36,51 @@ const Filter = (props) => {
                 <span aria-hidden="true">&times;</span>
               </button>
             </div>
-            <div class="modal-body">
+            <div class="modal-body mt-3">
               <div>
-                <a>Price</a>
+                <b>Price</b>
                 <br />
-                <input type="number" placeholder="Min"></input>
-                <a>-</a>
-                <input type="number" placeholder="Max"></input>
+                <div className="mt-3 d-flex justify-content-around">
+                  <input type="number" placeholder="Min" className="form-control"></input>
+                  <b>-</b>
+                  <input type="number" placeholder="Max" className="form-control"></input>
+                </div>
               </div>
               <br />
               <div>
-                <a>Date</a>
+                <b>Date</b>
                 <br />
-                <input type="date" />
+                <input type="date" className="form-control mt-3" />
               </div>
               <br />
               <div>
-                <a>Category</a>
+                <b>Category</b>
                 <div className="category">
-                  {/* <input type="text" placeholder=" विकल्प छान्नुहोस्" /> */}
-                  <div class="dropdown">
-                    <button
-                      class="btn btn-light dropdown-toggle"
+                  <div class="dropdown mt-3">
+                    {/* <button
+                      class="btn btn-secondary dropdown-toggle"
                       type="button"
-                      id="dropdownMenuButton"
-                      data-toggle="dropdown"
-                      aria-haspopup="true"
+                      id="dropdownMenuButton1"
+                      data-bs-toggle="dropdown"
                       aria-expanded="false"
+                      onClick={toggleOpen}
                     >
-                      विकल्प छान्नुहोस्
+                      <option></option>
                     </button>
-                    <div
-                      class="dropdown-menu"
-                      aria-labelledby="dropdownMenuButton"
+                    <option>laptop</option>
+                    <option>Mobile</option>
+                    <option>Headset</option> */}
+                    <select
+                      name="priority"
+                      className="form-control"
+                      placeholder="Select your priority "
                     >
-                      <a class="dropdown-item">Laptop</a>
-                      <a class="dropdown-item">Mobile</a>
-                      <a class="dropdown-item">HeadSet</a>
-                    </div>
+                      <option>विकल्प छान्नुहोस्</option>
+                      <option>laptop</option>
+                      <option>Mobile</option>
+                      <option>Headset</option>
+                      <option>Television</option>
+                    </select>
                   </div>
                 </div>
               </div>
@@ -77,7 +90,12 @@ const Filter = (props) => {
               <br />
             </div>
             <div class="modal-footer">
-              <button type="button" class="btn btn-danger" data-dismiss="modal">
+              <button
+                type="button"
+                class="btn btn-danger"
+                data-dismiss="modal"
+                onClick={() => setFilter(false)}
+              >
                 Cancel
               </button>
               <button type="button" class="btn btn-success">
