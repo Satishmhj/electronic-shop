@@ -8,3 +8,6 @@ export const DECREMENT = "DECREMENT";
 
 export const CLICK ="CLICK";
 export const REMOVEFROMCART ="REMOVEFROMCART";
+
+
+export const FILTER_PRODUCTS ="FILTER_PRODUCTS";

@@ -111,7 +111,14 @@ const Cart = (props) => {
                 //   Checkout
                 // </button>
                 <Link to={"/checkout"}>
-                  <button className="btn btn-success">Checkout</button>
+                  <button
+                    className="btn btn-success"
+                    onClick={() => {
+                      setCartIcon(false);
+                    }}
+                  >
+                    Checkout
+                  </button>
                 </Link>
               ) : (
                 <button type="button" class="btn btn-success" disabled>

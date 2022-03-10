@@ -1,5 +1,6 @@
+import { filterProducts } from "../Actions/FilterProducts";
 import {
-  PRODUCT_lIST,
+  FILTER_PRODUCTS,
   PRODUCT_LIST_FETCHING,
   PRODUCT_LIST_SUCCESS,
 } from "../Constants/Constants";
@@ -7,6 +8,7 @@ import {
 const INITIAL_STATE = {
   products: [],
   isLoading: false,
+  filterProducts: [],
 };
 
 const reducer = (state = INITIAL_STATE, action) => {
@@ -21,6 +23,16 @@ const reducer = (state = INITIAL_STATE, action) => {
         ...state,
         isLoading: false,
         products: action.payload,
+      };
+    case FILTER_PRODUCTS:
+       state.products.product.map((product) => {
+        if (product.belongsTo.includes()) {
+          filterProducts.push(product)
+        }
+      });
+      return {
+        ...state,
+        filterProducts,
       };
 
     default:

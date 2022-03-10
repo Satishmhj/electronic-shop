@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useSelector } from "react-redux";
 import "../../App.scss";
 
 const Filter = (props) => {
@@ -8,7 +9,14 @@ const Filter = (props) => {
   const toggleOpen = () => {
     setIsOpen(!isOpen);
   };
-  const menuClass = `dropdown-menu${isOpen ? " show" : ""}`;
+  // const menuClass = `dropdown-menu${isOpen ? " show" : ""}`;
+
+
+  // console.log(filterProducts);
+
+  const filter = useSelector(state => state.product.filter);
+
+  console.log(filter);
 
   return (
     <>
@@ -41,9 +49,17 @@ const Filter = (props) => {
                 <b>Price</b>
                 <br />
                 <div className="mt-3 d-flex justify-content-around">
-                  <input type="number" placeholder="Min" className="form-control"></input>
+                  <input
+                    type="number"
+                    placeholder="Min"
+                    className="form-control"
+                  ></input>
                   <b>-</b>
-                  <input type="number" placeholder="Max" className="form-control"></input>
+                  <input
+                    type="number"
+                    placeholder="Max"
+                    className="form-control"
+                  ></input>
                 </div>
               </div>
               <br />
