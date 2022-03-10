@@ -134,7 +134,10 @@ const Filter = (props) => {
               <button
                 type="button"
                 class="btn btn-success"
-                onClick={() => dispatch(filterProducts(filterData))}
+                onClick={() => {
+                  dispatch(filterProducts(filterData));
+                  setFilter(false);
+                }}
               >
                 Apply
               </button>

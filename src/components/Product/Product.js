@@ -67,7 +67,6 @@ const Product = (props) => {
                 const p = Number(items.price.replaceAll("$", ""));
                 // console.log(p > Number(filters.min) , p < Number(filters.max), p , Number(filters.min) , p , Number(filters.max));
 
-
                 if (filters.min && filters.max) {
                   if (p > Number(filters.min) && p < Number(filters.max)) {
                     return true;
