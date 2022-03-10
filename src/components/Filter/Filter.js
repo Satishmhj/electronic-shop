@@ -1,22 +1,23 @@
 import React, { useState } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import "../../App.scss";
+import { filterProducts } from "../Redux/Actions/FilterProducts";
 
 const Filter = (props) => {
   const { setFilter } = props;
   const [isOpen, setIsOpen] = useState(false);
+  const [filterData, setFilterData] = useState({});
 
   const toggleOpen = () => {
     setIsOpen(!isOpen);
   };
-  // const menuClass = `dropdown-menu${isOpen ? " show" : ""}`;
 
+  const dispatch = useDispatch();
 
-  // console.log(filterProducts);
+  // const filter = useSelector((state) => state.product.filter);
 
-  const filter = useSelector(state => state.product.filter);
-
-  console.log(filter);
+  // console.log(filter);
+  // console.log(filterData);
 
   return (
     <>
@@ -53,12 +54,22 @@ const Filter = (props) => {
                     type="number"
                     placeholder="Min"
                     className="form-control"
+                    onChange={(e) => {
+                      let data = { ...filterData };
+                      data.min = e.target.value;
+                      setFilterData(data);
+                    }}
                   ></input>
                   <b>-</b>
                   <input
                     type="number"
                     placeholder="Max"
                     className="form-control"
+                    onChange={(e) => {
+                      let data = { ...filterData };
+                      data.max = e.target.value;
+                      setFilterData(data);
+                    }}
                   ></input>
                 </div>
               </div>
@@ -87,15 +98,21 @@ const Filter = (props) => {
                     <option>Mobile</option>
                     <option>Headset</option> */}
                     <select
-                      name="priority"
+                      name="category"
                       className="form-control"
                       placeholder="Select your priority "
+                      onChange={(e) => {
+                        // console.log(e.target.value);
+                        let data = { ...filterData };
+                        data.category = e.target.value;
+                        setFilterData(data);
+                      }}
                     >
                       <option>विकल्प छान्नुहोस्</option>
-                      <option>laptop</option>
-                      <option>Mobile</option>
-                      <option>Headset</option>
-                      <option>Television</option>
+                      <option value="laptop">laptop</option>
+                      <option value="mobile">Mobile</option>
+                      <option value="headset">Headset</option>
+                      <option value="televison">Television</option>
                     </select>
                   </div>
                 </div>
@@ -114,7 +131,11 @@ const Filter = (props) => {
               >
                 Cancel
               </button>
-              <button type="button" class="btn btn-success">
+              <button
+                type="button"
+                class="btn btn-success"
+                onClick={() => dispatch(filterProducts(filterData))}
+              >
                 Apply
               </button>
             </div>

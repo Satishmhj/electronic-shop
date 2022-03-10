@@ -8,7 +8,7 @@ import {
 const INITIAL_STATE = {
   products: [],
   isLoading: false,
-  filterProducts: [],
+  filterProducts: {},
 };
 
 const reducer = (state = INITIAL_STATE, action) => {
@@ -25,15 +25,22 @@ const reducer = (state = INITIAL_STATE, action) => {
         products: action.payload,
       };
     case FILTER_PRODUCTS:
-       state.products.product.map((product) => {
-        if (product.belongsTo.includes()) {
-          filterProducts.push(product)
-        }
-      });
+      console.log(action.filters);
+
       return {
         ...state,
-        filterProducts,
+        filterProducts: action.filters,
       };
+
+    //  state.products.product.map((product) => {
+    //   if (product.belongsTo.includes()) {
+    //     filterProducts.push(product)
+    //   }
+    // });
+    // return {
+    //   ...state,
+    //   filterProducts,
+    // };
 
     default:
       return state;
