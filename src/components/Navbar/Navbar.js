@@ -5,11 +5,18 @@ import { ImHome, ImCart } from "react-icons/im";
 import { FaUserAlt } from "react-icons/fa";
 import Cart from "../Cart/Cart";
 import { useSelector } from "react-redux";
+import { Link, useNavigate } from "react-router-dom";
 
 const Navbar = (props) => {
   const { cartDetail, setCartDetail, cartIcon, setCartIcon, cd, setCd } = props;
 
   const click = useSelector((state) => state.click.click);
+
+  let navigate = useNavigate();
+
+  const navigating = () => {
+    navigate("/");
+  };
 
   return (
     <>
@@ -41,7 +48,7 @@ const Navbar = (props) => {
           <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
             <li class="nav-item ">
               <a class="nav-link">
-                <ImHome />
+                <ImHome  onClick={navigating}/>
               </a>
             </li>
             <li class="nav-item">
